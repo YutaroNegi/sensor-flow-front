@@ -81,7 +81,7 @@ const LoginForm = () => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Seu username" {...field} />
+                <Input placeholder="username" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -94,7 +94,7 @@ const LoginForm = () => {
             <FormItem>
               <FormLabel>Senha</FormLabel>
               <FormControl>
-                <Input placeholder="Sua senha" type="password" {...field} />
+                <Input placeholder="password" type="password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
