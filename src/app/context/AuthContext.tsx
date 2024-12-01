@@ -8,12 +8,14 @@ interface AuthContextType {
   isAuthenticated: boolean;
   loading: boolean;
   login: () => void;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   loading: true,
   login: () => {},
+  logout: () => {},
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -55,8 +57,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     router.push("/dashboard");
   };
 
+  const logout = async () => {
+    try {
+      console.log(process.env)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      if (response.ok) {
+        setIsAuthenticated(false);
+        router.push("/login");
+      } else {
+        console.error("Falha ao deslogar");
+      }
+    } catch (error) {
+      console.error("Erro ao deslogar:", error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, loading, login }}>
+    <AuthContext.Provider value={{ isAuthenticated, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
