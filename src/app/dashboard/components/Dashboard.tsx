@@ -83,7 +83,7 @@ const Dashboard: React.FC = () => {
     data?.items.map((item: SensorDataItem) => ({
       equipmentId: item.equipmentId,
       averageValue: parseFloat((item.totalValue / item.sampleCount).toFixed(2)),
-      intervalStart: new Date(item.intervalStartTime * 1000).toLocaleString(),
+      intervalStart: new Date(item.intervalStartTime * 1000).toLocaleDateString(),
     })) || [];
 
   return (
