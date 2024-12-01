@@ -1,14 +1,13 @@
 "use client";
 
-import { LogoutButton } from "./components/LogoutButton";
+import Dashboard from "./components/Dashboard"; // Ajuste o caminho conforme necessário
 
-const Dashboard = () => {
+const DashboardPage: React.FC = () => {
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <LogoutButton />
+    <div className="container mx-auto p-4">
+      <Dashboard />
     </div>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;
