@@ -39,10 +39,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
+        router.push("/login");
       }
     } catch (error) {
-      console.error("Erro ao verificar autenticação:", error);
+      console.error("Error to verify session", error);
       setIsAuthenticated(false);
+      router.push("/login");
     } finally {
       setLoading(false);
     }
@@ -68,7 +70,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setIsAuthenticated(false);
         router.push("/login");
       } else {
-        console.error("Falha ao deslogar");
+        console.error("Logout failed.");
       }
     } catch (error) {
       console.error("Erro ao deslogar:", error);
